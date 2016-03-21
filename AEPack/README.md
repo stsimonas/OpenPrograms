@@ -1,5 +1,5 @@
 # AEPack
-[Applied Energistics](http://ae-mod.info) pack for [Open Computers](https://oc.cil.li)
+[Applied Energistics](http://ae-mod.info) pack of programs and tools for [Open Computers](https://oc.cil.li)
 
 
 ***
