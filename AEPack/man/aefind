@@ -1,0 +1,3 @@
+aefind is a search (find) tool for querying the ME network, useful for quickly finding items and their detailed information.
+Usage:
+'aefind <term>' to find all items containing the given term in any field.

@@ -24,8 +24,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="aefind.lua" />
-    <Compile Include="aemon.lua" />
+    <Compile Include="bin\aefind.lua" />
+    <Compile Include="bin\aemon.lua" />
+    <Compile Include="lib\ae.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
+    <Folder Include="lib\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
