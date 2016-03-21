@@ -5,6 +5,6 @@
 ***
 
 #### **aefind**
-**aefind** is a search (find) tool for querying the ME network, useful for quickly finding items and their detailed information.
+**aefind** is a search tool for querying the ME network, useful for quickly finding items and their detailed information.
 
 ***

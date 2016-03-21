@@ -3,7 +3,7 @@
         aefind - AEPack
 
     Description:
-        aefind is a search (find) tool for querying the ME network, useful for quickly finding items and their detailed information.
+        aefind is a search tool for querying the ME network, useful for quickly finding items and their detailed information.
 
     Author:
         st.simonas
@@ -19,7 +19,7 @@ local args = shell.parse(...)
 
 
 local function printUsage()
-  print("aefind is a search (find) tool for querying the ME network, useful for quickly finding items and their detailed information.")
+  print("aefind is a search tool for querying the ME network, useful for quickly finding items and their detailed information.")
   print("Usage:")
   print("'aefind <term>' to find all items containing the given term in any field.")
 end
