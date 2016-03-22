@@ -13,7 +13,6 @@ local component = require("component")
 local shell = require("shell")
 
 local ae = assert(require("ae"))
-local mei = ae.component
 
 local args = shell.parse(...)
 
@@ -26,20 +25,23 @@ end
 
 local function findItems(term)
     term = term:lower()
-    print(string.format("Searching for '%s'", term))
+    print(string.format("Searching for '%s'...", term))
+    print("")
 
-    local items = mei.getAvailableItems()
+    local items = ae.getAvailableItems()
+    local matchingCount = 0
 
     for k, v in pairs(items) do
         local fingerprint = v.fingerprint
-        local details = mei.getItemDetail(fingerprint).basic()
+        local names = ae.getItemNames(fingerprint)
 
 	    local id = fingerprint.id
         local dmg = fingerprint.dmg
-        local displayName = details.display_name
-        local rawname = details.raw_name
+        local displayName = names.display_name
+        local rawname = names.raw_name
 
 	    if id:lower():find(term) ~= nil or displayName:lower():find(term) ~= nil or rawname:lower():find(term) ~= nil then
+            matchingCount = matchingCount + 1
             print(string.format("Display name: %s", displayName))
             print(string.format("\tRaw Name: %s", rawname))
             print(string.format("\tFingerprint Id: %s", id))
@@ -49,6 +51,8 @@ local function findItems(term)
             print("")
 	    end
     end
+
+    print(string.format("Found %s matching records out of %s total records.", matchingCount, #items))
 end
 
 if #args > 0 then
