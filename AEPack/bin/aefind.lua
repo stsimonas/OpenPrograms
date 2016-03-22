@@ -38,8 +38,15 @@ local function findItems(term)
         local dmg = fingerprint.dmg
         local displayName = names.display_name
         local rawname = names.raw_name
+        local oreDict = ""
+        
+        local oreDictMatch = false
+        for oreDictK, oreDictV in pairs(names.ore_dict) do
+            oreDictMatch = oreDictMatch or (oreDictK:lower():find(term) ~= nil)
+            oreDict = oreDict .. oreDictK .. "; "
+        end
 
-	    if id:lower():find(term) ~= nil or displayName:lower():find(term) ~= nil or rawname:lower():find(term) ~= nil then
+	    if id:lower():find(term) ~= nil or displayName:lower():find(term) ~= nil or rawname:lower():find(term) ~= nil or oreDictMatch then
             matchingCount = matchingCount + 1
             print(string.format("Display name: %s", displayName))
             print(string.format("\tRaw Name: %s", rawname))
@@ -47,6 +54,7 @@ local function findItems(term)
             print(string.format("\tFingerprint Dmg: %s", dmg))
             print(string.format("\tCount: %s", v.size))
             print(string.format("\tCraftable: %s", v.is_craftable))
+            print(string.format("\tOre Dictionary: %s", oreDict))
             print("")
 	    end
     end

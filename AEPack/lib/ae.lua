@@ -99,7 +99,12 @@ function ae.findItemFingerprint(term)
         local displayName = names.display_name
         local rawname = names.raw_name
 
-	    if id:lower():find(term) ~= nil or displayName:lower():find(term) ~= nil or rawname:lower():find(term) ~= nil then
+        local oreDictMatch = false
+        for oreDictK, oreDictV in pairs(names.ore_dict) do
+            oreDictMatch = oreDictMatch or (oreDictK:lower():find(term) ~= nil)
+        end
+
+	    if id:lower():find(term) ~= nil or displayName:lower():find(term) ~= nil or rawname:lower():find(term) ~= nil or oreDictMatch then
             return fingerprint
 	    end
     end
@@ -109,11 +114,12 @@ function ae.getItemNames(fingerprint)
     local cachedNamesKey = string.format("%s:%s", fingerprint.id, fingerprint.dmg)
     local cachedNames = ae.cache.names[cachedNamesKey] 
     if not cachedNames then
-        local realDetails = ae.getItemDetail(fingerprint).basic()
+        local realDetails = ae.getItemDetail(fingerprint).all()
 
         cachedNames = {
             display_name = realDetails.display_name,
-            raw_name = realDetails.raw_name
+            raw_name = realDetails.raw_name,
+            ore_dict = realDetails.ore_dict
         }
 
         ae.cache.names[cachedNamesKey] = cachedNames
