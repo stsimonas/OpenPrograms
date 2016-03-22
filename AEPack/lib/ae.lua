@@ -86,8 +86,6 @@ function ae.getItemNames(fingerprint)
     local cachedNamesKey = string.format("%s:%s", fingerprint.id, fingerprint.dmg)
     local cachedNames = ae.cache.names[cachedNamesKey] 
     if not cachedNames then
-        print("Updating cache for: " .. fingerprint.id)
-
         local realDetails = ae.getItemDetail(fingerprint).basic()
 
         cachedNames = {
