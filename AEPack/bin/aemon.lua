@@ -63,11 +63,15 @@ end
 
 local function addToConfig(fingerprint, count)
     local config = loadConfig()
-
+        
+    local displayName = ae.getItemNames(fingerprint).display_name
     local key = string.format("%s::%s", fingerprint.id, fingerprint.dmg)
+
     config[key] = count
 
     saveConfig(config)
+
+    print(string.format("'%s' = %s added to configuration.", displayName, count))
 end
 
 local function clearConfig()
@@ -77,16 +81,19 @@ end
 local function removeFromConfig(fingerprint)
     local config = loadConfig()
 
+    local displayName = ae.getItemNames(fingerprint).display_name
     local key = string.format("%s::%s", fingerprint.id, fingerprint.dmg)
 
-    if config[key] == nil then
-        local displayName = ae.getItemNames(fingerprint).display_name
+    if config[key] == nil then        
         error("The given item is not configured, item: " .. displayName)
+        return
     end
 
     config[key] = nil
 
     saveConfig(config)
+    
+    print(string.format("'%s' removed from configuration.", displayName))
 end
 
 local function printConfig()
@@ -124,7 +131,7 @@ local function loop()
 		    if diff > 0 then
                 local craftingFingerprint = {name = id, damage = dmg}
 
-                local ammount = math.min(diff, 10)
+                local ammount = math.min(diff, math.ceil(requiredCount / 10))
 			    local request = requests[key]
 			    local performCrafting = request == nil
 			
