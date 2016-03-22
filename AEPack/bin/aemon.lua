@@ -27,7 +27,7 @@ local function printUsage()
     print("'aemon' to start the infinite loop/monitoring.")
     print("'aemon print|view|list' to print the currently configured items.")
     print("'aemon remove|delete <searchTerm>' to remove the specified item from configuration. The <searchTerm> is used to find the full item id.")
-    print("'aemon add <searchTerm> <count>' to add the specified item to configuration. The <searchTerm> is used to find the full item id.")
+    print("'aemon add <searchTerm> <count>' to add or update the specified item to configuration. The <searchTerm> is used to find the full item id.")
     print("'aemon clear' clears the configuration, removing all configured items in the file.")
 end
 
@@ -78,6 +78,12 @@ local function removeFromConfig(fingerprint)
     local config = loadConfig()
 
     local key = string.format("%s::%s", fingerprint.id, fingerprint.dmg)
+
+    if config[key] == nil then
+        local displayName = ae.getItemNames(fingerprint).display_name
+        error("The given item is not configured, item: " .. displayName)
+    end
+
     config[key] = nil
 
     saveConfig(config)
