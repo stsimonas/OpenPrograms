@@ -82,6 +82,29 @@ function ae.purgeCache()
     purgeCache()
 end
 
+function ae.findItemDetails(term)
+    local fingerprint = ae.findItemFingerprint(term)
+    return ae.getItemDetail(fingerprint).all()
+end
+
+function ae.findItemFingerprint(term)
+    term = term:lower()
+    local allItems = ae.getAvailableItems()
+    for k, v in pairs(allItems) do
+        local fingerprint = v.fingerprint
+        local names = ae.getItemNames(fingerprint)
+
+	    local id = fingerprint.id
+        local dmg = fingerprint.dmg
+        local displayName = names.display_name
+        local rawname = names.raw_name
+
+	    if id:lower():find(term) ~= nil or displayName:lower():find(term) ~= nil or rawname:lower():find(term) ~= nil then
+            return fingerprint
+	    end
+    end
+end
+
 function ae.getItemNames(fingerprint)
     local cachedNamesKey = string.format("%s:%s", fingerprint.id, fingerprint.dmg)
     local cachedNames = ae.cache.names[cachedNamesKey] 

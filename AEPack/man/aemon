@@ -1,0 +1,7 @@
+aemon is a program which runs in an infinite loop, constantly checking the count of specific items in the attached AE network if and the levels are lower than required places crafting orders.
+Usage:
+'aemon' to start the infinite loop/monitoring.
+'aemon print|view|list' to print the currently configured items.
+'aemon remove|delete <searchTerm>' to remove the specified item from configuration. The <searchTerm> is used to find the full item id.
+'aemon add <searchTerm> <count>' to add the specified item to configuration. The <searchTerm> is used to find the full item id.
+'aemon clear' clears the configuration, removing all configured items in the file.

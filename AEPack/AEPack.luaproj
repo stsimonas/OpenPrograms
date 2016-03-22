@@ -27,7 +27,7 @@
     <Compile Include="bin\aefind.lua" />
     <Compile Include="bin\aemon.lua" />
     <Compile Include="lib\ae.lua" />
-    <Compile Include="man\aefind" />
+    <Content Include="man\aefind" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
@@ -35,6 +35,7 @@
     <Folder Include="man\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="man\aemon" />
     <Content Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />

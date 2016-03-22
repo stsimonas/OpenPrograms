@@ -9,7 +9,6 @@
         st.simonas
 ]]
 
-local component = require("component")
 local shell = require("shell")
 
 local ae = assert(require("ae"))
@@ -18,9 +17,9 @@ local args = shell.parse(...)
 
 
 local function printUsage()
-  print("aefind is a search tool for querying the ME network, useful for quickly finding items and their detailed information.")
-  print("Usage:")
-  print("'aefind <term>' to find all items containing the given term in any field.")
+    print("aefind is a search tool for querying the ME network, useful for quickly finding items and their detailed information.")
+    print("Usage:")
+    print("'aefind <term>' to find all items containing the given term in any field.")
 end
 
 local function findItems(term)
