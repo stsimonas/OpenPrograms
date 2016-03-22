@@ -3,8 +3,8 @@
 
 ***
 
-**aefind** - a search tool for querying the ME network, useful for quickly finding items and their detailed information.
-**aemon** - a program which runs in an infinite loop, constantly checking the count of specific items in the attached AE network if and the levels are lower than required places crafting orders.
+- **aefind** - a search tool for querying the ME network, useful for quickly finding items and their detailed information.
+-  **aemon** - a program which runs in an infinite loop, constantly checking the count of specific items in the attached AE network and if the levels are lower than required - places crafting orders.
 
 ***
 

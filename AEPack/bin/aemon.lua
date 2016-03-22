@@ -22,7 +22,7 @@ local args = shell.parse(...)
 
 
 local function printUsage()
-    print("aemon is a program which runs in an infinite loop, constantly checking the count of specific items in the attached AE network if and the levels are lower than required places crafting orders.")
+    print("aemon is a program which runs in an infinite loop, constantly checking the count of specific items in the attached AE network and if the levels are lower than required places crafting orders.")
     print("Usage:")
     print("'aemon' to start the infinite loop/monitoring.")
     print("'aemon print|view|list' to print the currently configured items.")
